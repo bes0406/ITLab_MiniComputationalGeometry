@@ -28,9 +28,9 @@ int main (int argc, char *argv[]){
 	for (int i = 0; i<numRows; i++){
 		b[i]=rand()%10;
 	}
-	int positiveRows[numRows];
-	int negativeRows[numRows];
-	int zeroRows[numRows];
+	int * positiveRows = new int[numRows];
+	int * negativeRows = new int[numRows];
+	int * zeroRows = new int[numRows];
 	int numPositiveRows = 0, numNegativeRows = 0, numZeroRows = 0;
 	// classify into positive, negative, zero
 	for (int i = 0; i < numRows ; i ++)
@@ -53,8 +53,7 @@ int main (int argc, char *argv[]){
 		int HCF = (A[negativeRows[i]][1]*(-1)); 
 		int mul = HCF *(A[positiveRows[i]][1]);
 		for(int j=0; j< numPositiveRows; j++){ 
-			for(int k =0; k<numVariables; k++){
-			/* Need to fix it: linear combinations need to be done on the whole row of A, not a single element of it */
+			for(int k =0; k<numVariables; k++){ /* Need to fix it: linear combinations need to be done on the whole row of A, not a single element of it */
 				newA[rw][k] = (mul/A[negativeRows[i]][1])*(A[negativeRows[i]][k]) + (mul/A[positiveRows[i]][1])*(A[positiveRows[i]][k]);
 			}
 			newB[rw]=(mul/A[negativeRows[i]][1])*(b[negativeRows[i]]) + (mul/A[positiveRows[0]][1])*(b[positiveRows[j]]);
@@ -69,7 +68,7 @@ int main (int argc, char *argv[]){
 			newA[i][j] = A[zeroRows[a]][j];
 		}
 		newB[i] = zeroRows[n];
-                n++;
+        n++;
 		a++;
 	}
 
