@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <time.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -14,7 +15,7 @@ int* create_b(int rows);
 void Calculating_new_system(int **old, int *b,int index_to_eliminate, int numrows, int numcol);
 
 int main (int argc, char *argv[]){
-	srand(time(0));
+	srand(time(NULL));
 	int numVariables , numRows, choice;
 	cout << " Test with random numbers (press 1). "<<'\n'
 		 <<"Fill the variables manually (press 2) \n";
@@ -27,8 +28,15 @@ int main (int argc, char *argv[]){
 	if (choice == 1){
 		A = create_a(numVariables, numRows);
 		b = create_b(numRows);
+		for (int i = 0; i < numRows; i++){
+			for(int j = 0; j < numVariables; j++){
+				cout <<setw(4)<<A[i][j];
+			}
+			cout <<setw(4)<<b[i]<<'\n';
+		}
 	}
-	else{
+	else if (choice == 2)
+	{
 		for (int i = 0; i<numRows; i++){
 			A[i] = new int[numVariables];
 		}
@@ -36,8 +44,6 @@ int main (int argc, char *argv[]){
 			for(int j=0; j<numVariables; j++){
 				cin>>A[i][j];
 			}
-		}
-		for (int i = 0; i<numRows; i++){
 			cin>>b[i];
 		}
 	}
@@ -63,7 +69,6 @@ int* create_b(int rows){
 		}
 	return arr;
 }
-
 int ** create_a(int col, int rows){
 	int **arr = new int*[rows];
 	for (int i = 0; i<rows; i++){
@@ -103,9 +108,9 @@ void Calculating_new_system(int **old, int *b,int index_to_eliminate, int numrow
 		int mul = HCF *(old[positiveRows[i]][index_to_eliminate]);
 		for(int j=0; j< numPositiveRows; j++){ 
 			for(int k =0; k<numcol; k++){ 
-				newA[rw][k] = (mul/old[negativeRows[i]][index_to_eliminate])*(old[negativeRows[i]][k]) + (mul/old[positiveRows[i]][1])*(old[positiveRows[i]][k]);
+				newA[rw][k] = (mul/old[negativeRows[i]][index_to_eliminate])*(old[negativeRows[i]][k]) + (mul/old[positiveRows[i]][index_to_eliminate])*(old[positiveRows[i]][k]);
 			}
-			newB[rw]=(mul/old[negativeRows[i]][index_to_eliminate])*(b[negativeRows[i]]) + (mul/old[positiveRows[0]][1])*(b[positiveRows[j]]);
+			newB[rw]=(mul/old[negativeRows[i]][index_to_eliminate])*(b[negativeRows[i]]) + (mul/old[positiveRows[i]][index_to_eliminate])*(b[positiveRows[j]]);
 			rw++;
 		}
 	}
