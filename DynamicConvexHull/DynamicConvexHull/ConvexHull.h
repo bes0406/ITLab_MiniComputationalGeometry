@@ -10,5 +10,8 @@ public:
 	int FindMaxX(ConvexHull a);  //индекс точки с максимальной Х-координатой
 	int FindMinX(ConvexHull a);  //индекс точки с минимальной Х-координатой
 	bool IsPointInHull(TPoint p, ConvexHull a);  //true если точка принадлежит выпуклой оболочке
+	int FindLeftSupportLine(TPoint p, ConvexHull a);   //поиск левой опорной прямой
+	int FindRightSupportLine(TPoint p, ConvexHull a);   //поиск правой опорной прямой
+	ConvexHull CreateNewConvexHull(TPoint p, ConvexHull a);
 };
 
