@@ -40,10 +40,10 @@ int ConvexHull:: FindMinX(ConvexHull a)  //индекс точки с минимальной Х-координа
 	return m;
 }
 
-bool ConvexHull:: IsPointInHull(TPoint p, ConvexHull a)  //true если точка принадлежит выпуклой оболочке
+bool ConvexHull:: IsPointInHull(TPoint p)  //true если точка принадлежит выпуклой оболочке
 {
-	int m=FindMinX(a);   //индекс точки с минимальной Х-координатой
-	int n=FindMaxX(a);  //индекс точки с максимальной Х-координатой
+	int m=FindMinX(*this);   //индекс точки с минимальной Х-координатой
+	int n=FindMaxX(*this);  //индекс точки с максимальной Х-координатой
 	//создаем два массива - верхний и нижний, которые разделяет прямая MN
 	int ku;  //размер верхнего массива
 	int kd;   //размер нижнего массива
@@ -51,35 +51,35 @@ bool ConvexHull:: IsPointInHull(TPoint p, ConvexHull a)  //true если точка прина
 	TPoint *d;    //нижний массив
 	if (m<n)
 	{
-		ku=a.k-(n-m-1);
+		ku=k-(n-m-1);
 		u=new TPoint[ku];
 		kd=n-m+1;
 		d=new TPoint[kd];
 		int i=0;
 		for (int j=m; j>=0; i++,j--)
-			u[i]=a.hull[j];
+			u[i]=hull[j];
 		i++; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		for (int j=a.k-1; j<=n; j++,i++)
-			u[i]=a.hull[j];
+		for (int j=k-1; j<=n; j++,i++)
+			u[i]=hull[j];
 		i=0;
 		for (int j=m; j<=n; j++,i++)
-			d[i]=a.hull[j];
+			d[i]=hull[j];
 	}
 	else //if m>n !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!m=n
 	{
 		ku=n-m+1;
 		u=new TPoint[ku];
-		kd=a.k-(n-m-1);
+		kd=k-(n-m-1);
 		d=new TPoint[kd];
 		int i=0;
-		for (int j=m; j<=a.k; i++,j++)
-			d[i]=a.hull[j];
+		for (int j=m; j<=k; i++,j++)
+			d[i]=hull[j];
 		i++; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		for (int j=0; j<=n; j++,i++)
-			d[i]=a.hull[j];
+			d[i]=hull[j];
 		i=0;
 		for (int j=m; j<=n; j++,i++)
-			u[i]=a.hull[j];
+			u[i]=hull[j];
 	}
 	bool fl=true;
 	int i=0;
