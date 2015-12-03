@@ -1,4 +1,4 @@
-﻿Build started 03.12.2015 21:27:30.
+﻿Build started 03.12.2015 21:43:01.
      1>Project "C:\Users\User\Desktop\ITLab_MiniComputationalGeometry\DynamicConvexHull\DynamicConvexHull\DynamicConvexHull.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Touching "Debug\DynamicConvexHull.unsuccessfulbuild".
@@ -31,4 +31,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.78
+Time Elapsed 00:00:00.70
