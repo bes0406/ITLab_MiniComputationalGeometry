@@ -43,7 +43,17 @@ int ConvexHull:: FindMinX()  //индекс точки с минимальной Х-координатой
 bool ConvexHull:: IsPointInHull(TPoint p)  //true если точка принадлежит выпуклой оболочке
 {
 	int m=FindMinX();   //индекс точки с минимальной Х-координатой                
-	int n=FindMaxX();  //индекс точки с максимальной Х-координатой                   
+	int n=FindMaxX();  //индекс точки с максимальной Х-координатой   
+	bool fl=true;
+	if (m==n)
+		if (k==1)
+			if (p==hull[0]) fl=true;
+			else fl=false;
+		else
+			if (p[1]*(hull[0][0]-hull[1][0])-p[0]*(hull[0][1]-hull[1][1])+hull[0][1]*hull[1][0]-hull[1][1]*hull[0][0]==0) fl= true; //возникновение ошибок из-за способа хранения вещественнных чисел
+			else fl=false;
+	else
+	{
 	//создаем два массива - верхний и нижний, которые разделяет прямая MN
 	int ku;  //размер верхнего массива
 	int kd;   //размер нижнего массива
@@ -65,7 +75,7 @@ bool ConvexHull:: IsPointInHull(TPoint p)  //true если точка принадлежит выпукло
 		for (int j=m; j<=n; j++,i++)
 			d[i]=hull[j];
 	}
-	else //if m>n !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!m=n
+	else  
 	{
 		ku=n-m+1;
 		u=new TPoint[ku];
@@ -81,7 +91,7 @@ bool ConvexHull:: IsPointInHull(TPoint p)  //true если точка принадлежит выпукло
 		for (int j=m; j<=n; j++,i++)
 			u[i]=hull[j];
 	}
-	bool fl=true;
+	//bool fl=true;
 	int i=0;
 	while ((fl)&&(i<ku-1))
 	{
@@ -95,6 +105,7 @@ bool ConvexHull:: IsPointInHull(TPoint p)  //true если точка принадлежит выпукло
 		if (p[1]*(d[i][0]-d[i+1][0])-p[0]*(d[i][1]-d[i+1][1])+d[i][1]*d[i+1][0]-d[i+1][1]*d[i][0]<0)
 			fl=false;
 		i++;
+	}
 	}
 	return fl;
 }
