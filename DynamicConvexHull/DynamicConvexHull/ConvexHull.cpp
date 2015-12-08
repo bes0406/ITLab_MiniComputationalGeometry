@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 #include "ConvexHull.h"
-
+using namespace std;
 
 ConvexHull::ConvexHull(TPoint p)
 {
@@ -162,19 +162,26 @@ ConvexHull ConvexHull:: CreateNewConvexHull(TPoint p)
 		b=new TPoint[knew];
 		if (r>l)
 		{
-			int i=0;
-			for (i;i<=l; i++)
+			int st=0;
+			for (int i=0;i<=l; i++)
+			{
 				b[i]=hull[i];
-			b[i+1]=p;  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			for (int j=i+2, t=r; j<knew; j++,t++)
+				st++;
+			}
+			b[st]=p;
+			st++;
+			for (int j=st, t=r; j<knew; j++,t++)
 				b[j]=hull[t];
 		}
 		else //if (r<l) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		{
-			int j=0;
-			for (int i=r; i<=l; i++,j++)
+			int st=0;
+			for (int i=r, j=0; i<=l; i++,j++)
+			{
 				b[j]=hull[i];
-			b[j+1]=p;  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+				st++;
+			}
+			b[st]=p;  
 		}
 		delete[] hull;
 		k=knew;
@@ -183,5 +190,5 @@ ConvexHull ConvexHull:: CreateNewConvexHull(TPoint p)
 			hull[i]=b[i];
 		delete[] b;
 	}
-	return *this; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!создать новую выпуклую оболочку. конструктор
+	return *this;
 }

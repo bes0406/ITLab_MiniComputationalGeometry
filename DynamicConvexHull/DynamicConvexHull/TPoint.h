@@ -1,5 +1,6 @@
 #include "math.h"
 #pragma once
+using namespace std;
 class TPoint
 {
 public:
