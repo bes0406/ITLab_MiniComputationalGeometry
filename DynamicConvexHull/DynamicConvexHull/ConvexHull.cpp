@@ -14,11 +14,11 @@ ConvexHull::~ConvexHull(void)
 	delete[] hull;
 }
 
-int ConvexHull:: FindMaxX(ConvexHull a) //индекс точки с максимальной Х-координатой
+int ConvexHull:: FindMaxX() //индекс точки с максимальной Х-координатой
 {
 	int n=0;
 	int xn=hull[0][0];
-	for(int i=1; i<a.k; i++)
+	for(int i=1; i<k; i++)
 		if (hull[i][0]>xn)
 		{
 			xn=hull[i][0];
@@ -27,11 +27,11 @@ int ConvexHull:: FindMaxX(ConvexHull a) //индекс точки с максимальной Х-координа
 	return n;
 }
 
-int ConvexHull:: FindMinX(ConvexHull a)  //индекс точки с минимальной Х-координатой
+int ConvexHull:: FindMinX()  //индекс точки с минимальной Х-координатой
 {
 	int m=0;
 	int xm=hull[0][0];
-	for(int i=1; i<a.k; i++)
+	for(int i=1; i<k; i++)
 		if (hull[i][0]<xm)
 		{
 			xm=hull[i][0];
@@ -42,8 +42,8 @@ int ConvexHull:: FindMinX(ConvexHull a)  //индекс точки с минимальной Х-координа
 
 bool ConvexHull:: IsPointInHull(TPoint p)  //true если точка принадлежит выпуклой оболочке
 {
-	int m=FindMinX(*this);   //индекс точки с минимальной Х-координатой
-	int n=FindMaxX(*this);  //индекс точки с максимальной Х-координатой
+	int m=FindMinX();   //индекс точки с минимальной Х-координатой                
+	int n=FindMaxX();  //индекс точки с максимальной Х-координатой                   
 	//создаем два массива - верхний и нижний, которые разделяет прямая MN
 	int ku;  //размер верхнего массива
 	int kd;   //размер нижнего массива

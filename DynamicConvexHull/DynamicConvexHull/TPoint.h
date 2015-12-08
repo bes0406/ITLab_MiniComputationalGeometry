@@ -1,4 +1,6 @@
+#include "stdafx.h"
 #include "math.h"
+#include <iostream>
 #pragma once
 using namespace std;
 class TPoint
