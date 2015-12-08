@@ -160,9 +160,9 @@ int ConvexHull:: FindRightSupportLine(TPoint p)   //поиск правой опорной прямой
 ConvexHull ConvexHull:: CreateNewConvexHull(TPoint p)
 {
 	if (IsPointInHull(p))
-		return *this;
+		return (*this);
 	else
-	{
+	{/*
 		int l=FindLeftSupportLine(p);
 		int r=FindRightSupportLine(p);
 		int knew; //размер нового массива
@@ -199,7 +199,7 @@ ConvexHull ConvexHull:: CreateNewConvexHull(TPoint p)
 		new TPoint[k];
 		for (int i=0; i<k; i++)
 			hull[i]=b[i];
-		delete[] b;
+		delete[] b;*/
 	}
 	return *this;
 }

@@ -10,9 +10,9 @@ int main(int argc, _TCHAR* argv[])
 	int a=t.FindMinX();
 	cout << a <<endl ;
 	int k=t.FindRightSupportLine(p1);
-	//bool fl=t.IsPointInHull(p1);
-	cout << k ;
-	//t.CreateNewConvexHull(p1);
+	bool fl=t.IsPointInHull(p);
+	cout << fl ;
+	t.CreateNewConvexHull(p);
 	system("pause");
 	return 0;
 }
