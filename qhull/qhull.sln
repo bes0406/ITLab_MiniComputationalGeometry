@@ -6,10 +6,7 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj", "{20934775-1851-47BE-9EB3-2B5EAB4FE4F4}"
 	ProjectSection(ProjectDependencies) = postProject
 		{578B7058-21D0-46EB-B44C-EA490EF2F32C} = {578B7058-21D0-46EB-B44C-EA490EF2F32C}
-		{6ED21492-AF35-4B7B-B639-C0E1D211E851} = {6ED21492-AF35-4B7B-B639-C0E1D211E851}
 	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gtest", "gtest\gtest.vcxproj", "{6ED21492-AF35-4B7B-B639-C0E1D211E851}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +22,6 @@ Global
 		{20934775-1851-47BE-9EB3-2B5EAB4FE4F4}.Debug|Win32.Build.0 = Debug|Win32
 		{20934775-1851-47BE-9EB3-2B5EAB4FE4F4}.Release|Win32.ActiveCfg = Release|Win32
 		{20934775-1851-47BE-9EB3-2B5EAB4FE4F4}.Release|Win32.Build.0 = Release|Win32
-		{6ED21492-AF35-4B7B-B639-C0E1D211E851}.Debug|Win32.ActiveCfg = Debug|Win32
-		{6ED21492-AF35-4B7B-B639-C0E1D211E851}.Debug|Win32.Build.0 = Debug|Win32
-		{6ED21492-AF35-4B7B-B639-C0E1D211E851}.Release|Win32.ActiveCfg = Release|Win32
-		{6ED21492-AF35-4B7B-B639-C0E1D211E851}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,5 @@
 #include "../qhull/qh.h"
-#include "../gtest/gtest.h"
+#include "gtest/gtest.h"
 
 
 TEST(ConvexHull,can_split)

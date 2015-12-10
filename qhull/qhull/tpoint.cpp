@@ -37,8 +37,10 @@ double TPoint :: length()
 }
 
 
-int CheckPoint(TPoint a, TPoint b, TPoint c)   // Возвращаемый результат 0 - точка b лежит на прямой, >0 - выше, <0 - ниже
+int TPoint :: CheckPoint(TPoint a, TPoint b, TPoint c)   // Возвращаемый результат 0 - точка b лежит на прямой, >0 - выше, <0 - ниже
  {
+	 /// Это неверно: например, если в результате будет 0.7, то при приведении к int оно станет 0
+	 /// Нужно честно взять знак
 	 return (b.X-a.X)*(b.Y-c.Y)-(b.Y-a.Y)*(b.X-c.X);
 }
 
