@@ -3,11 +3,11 @@
 #include "ConvexHull.h"
 int main(int argc, _TCHAR* argv[])
 {
-	TPoint p(1,1);
+	TPoint p(1,3);
 	ConvexHull t(p);
 	ConvexHull t1(p);
 	cout << "p  " << p[0] <<"   "<<p[1] << endl << "t   " << t.hull[0][0] <<"   "<< t.hull[0][1] <<endl;
-	TPoint p1(1,3);
+	TPoint p1(1,1);
 	cout << "p1  " << p1[0] <<"   "<<p1[1] << endl;
 	//int a=t.FindMinX();
 	//cout << a <<endl ;
@@ -20,32 +20,7 @@ int main(int argc, _TCHAR* argv[])
 	cout << "t1.k    " <<t1.k<<endl;
 	cout << "t1   " << endl << t1.hull[0][0] << t1.hull[0][1] <<endl << t1.hull[1][0] << t1.hull[1][1] << endl;
 	TPoint p2(2,2);
-	/*int l=-1;
-	cout << l<<endl;
-	for (int i=0;i<t1.k; i++)
-	{
-		cout <<"i   " <<i<<endl;
-		bool fl=true;
-		cout << fl <<endl;
-		int j=0;
-		while ((fl)&&(j<t1.k))
-		
-		{
-			if (t1.hull[j][1]*(p2[0]-t1.hull[i][0])-t1.hull[j][0]*(p2[1]-t1.hull[i][1])+p2[1]*t1.hull[i][0]-t1.hull[i][1]*p2[0]>0)
-					fl=false;
-		cout <<fl<<endl;
-			
-		j++;
-		}
-		cout << "Fl  " << fl << endl;
-	if (fl) 
-		if (l=-1)
-			l=i;
-		else
-			if (p2.distance(t1.hull[l])<p2.distance(t1.hull[i]))
-				l=i;
-	}*/
-
+	
 	int l=t1.FindLeftSupportLine(p2);
 	int r=t1.FindRightSupportLine(p2);
 	t1=t1.CreateNewConvexHull(p2);

@@ -137,28 +137,6 @@ bool ConvexHull:: IsPointInHull(TPoint p)  //true если точка принадлежит выпукло
 	return fl;
 }
 
-int ConvexHull:: FindLeftSupportLine(TPoint p)   //поиск левой опорной прямой
-{
-	int l=-1;
-	for (int i=0;i<k; i++)
-	{
-		bool fl=true;
-		int j=0;
-		while ((fl)&&(j<k))
-		{
-			if (hull[j][1]*(p[0]-hull[i][0])-hull[j][0]*(p[1]-hull[i][1])+p[1]*hull[i][0]-hull[i][1]*p[0]>0)
-				fl=false;
-		j++;
-		}
-	if (fl) 
-		if (l=-1)
-			l=i;
-		else
-			if (p.distance(hull[l])<p.distance(hull[i]))
-				l=i;
-	}
-	return l;
-}
 int ConvexHull:: FindRightSupportLine(TPoint p)   //поиск правой опорной прямой
 {
 	int r=-1;
@@ -168,7 +146,7 @@ int ConvexHull:: FindRightSupportLine(TPoint p)   //поиск правой опорной прямой
 		int j=0;
 		while ((fl)&&(j<k))
 		{
-			if (hull[j][1]*(p[0]-hull[i][0])-hull[j][0]*(p[1]-hull[i][1])+p[1]*hull[i][0]-hull[i][1]*p[0]<0)
+			if (hull[j][1]*(p[0]-hull[i][0])-hull[j][0]*(p[1]-hull[i][1])+p[1]*hull[i][0]-hull[i][1]*p[0]>0)
 				fl=false;
 		j++;
 		}
@@ -181,6 +159,28 @@ int ConvexHull:: FindRightSupportLine(TPoint p)   //поиск правой опорной прямой
 	}
 	return r;
 }
+int ConvexHull:: FindLeftSupportLine(TPoint p)   //поиск левой опорной прямой
+{
+	int l=-1;
+	for (int i=0;i<k; i++)
+	{
+		bool fl=true;
+		int j=0;
+		while ((fl)&&(j<k))
+		{
+			if (hull[j][1]*(p[0]-hull[i][0])-hull[j][0]*(p[1]-hull[i][1])+p[1]*hull[i][0]-hull[i][1]*p[0]<0)
+				fl=false;
+		j++;
+		}
+	if (fl) 
+		if (l=-1)
+			l=i;
+		else
+			if (p.distance(hull[l])<p.distance(hull[i]))
+				l=i;
+	}
+	return l;
+}
 
 ConvexHull ConvexHull:: CreateNewConvexHull(TPoint p)
 {
@@ -191,7 +191,7 @@ ConvexHull ConvexHull:: CreateNewConvexHull(TPoint p)
 		int l=FindLeftSupportLine(p);
 		int r=FindRightSupportLine(p);
 		int knew; //размер нового массива
-		if (r>l)//(r<l) 
+		if (r>l) 
 			knew=k-(r-l-1)+1;
 		else knew=-(r-l-1)+1;
 		TPoint *b;
