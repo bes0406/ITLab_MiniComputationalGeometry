@@ -31,10 +31,17 @@ int main(int argc, _TCHAR* argv[])
 	q=t1.IsPointInHull(p);
 	q1=t1.IsPointInHull(p1);
 	q2=t1.IsPointInHull(p2);
-	cout << "IsPoinrInHull" << endl << "p    " << q << endl << "p1   " << q1 <<endl <<"p2   "<<q2<<endl;
+	cout << "IsPointInHull" << endl << "p    " << q << endl << "p1   " << q1 <<endl <<"p2   "<<q2<<endl;
 	//bool r=((p[0]==t1.hull[0][0])&((p[1]<=t1.hull[0][1])&(p[1]>=t1.hull[1][1])|(p[1]>=t1.hull[0][1])&(p[1]<=t1.hull[1][1])));
 	//bool r1=(p[1]>t1.hull[0][1]);
 	//cout << r<< endl;
+	int m=t1.FindMinX();   //индекс точки с минимальной ’-координатой                
+	int n=t1.FindMaxX();
+	cout <<"MIN   " << m << "             MAX   " << n <<endl;
+	TPoint p3(1,4);
+	t1=t1.CreateNewConvexHull(p3);
+	cout << "t1.k    " <<t1.k<<endl;
+	cout << "t1   "<< t1.hull[0][0] << t1.hull[0][1] <<endl << t1.hull[1][0] << t1.hull[1][1] << endl << t1.hull[2][0] << t1.hull[2][1] <<endl << t1.hull[3][0] << t1.hull[3][1] <<endl;
 	system("pause");
 	return 0;
 }
