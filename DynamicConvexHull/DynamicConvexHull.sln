@@ -2,8 +2,17 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynamicConvexHull", "DynamicConvexHull\DynamicConvexHull.vcxproj", "{2E290BC5-F2EF-4E70-BEEB-CCB301ADC5AB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{43C21576-C9D4-4B2C-8E27-E50662DA178E} = {43C21576-C9D4-4B2C-8E27-E50662DA178E}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testTPoint", "testTPoint\testTPoint.vcxproj", "{7C390CD6-B975-4813-B6F4-810A9ED80C63}"
+	ProjectSection(ProjectDependencies) = postProject
+		{43C21576-C9D4-4B2C-8E27-E50662DA178E} = {43C21576-C9D4-4B2C-8E27-E50662DA178E}
+		{2E290BC5-F2EF-4E70-BEEB-CCB301ADC5AB} = {2E290BC5-F2EF-4E70-BEEB-CCB301ADC5AB}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibConvexHull", "LibConvexHull\LibConvexHull.vcxproj", "{43C21576-C9D4-4B2C-8E27-E50662DA178E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +28,10 @@ Global
 		{7C390CD6-B975-4813-B6F4-810A9ED80C63}.Debug|Win32.Build.0 = Debug|Win32
 		{7C390CD6-B975-4813-B6F4-810A9ED80C63}.Release|Win32.ActiveCfg = Release|Win32
 		{7C390CD6-B975-4813-B6F4-810A9ED80C63}.Release|Win32.Build.0 = Release|Win32
+		{43C21576-C9D4-4B2C-8E27-E50662DA178E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{43C21576-C9D4-4B2C-8E27-E50662DA178E}.Debug|Win32.Build.0 = Debug|Win32
+		{43C21576-C9D4-4B2C-8E27-E50662DA178E}.Release|Win32.ActiveCfg = Release|Win32
+		{43C21576-C9D4-4B2C-8E27-E50662DA178E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

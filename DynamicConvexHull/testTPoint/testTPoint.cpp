@@ -2,6 +2,9 @@
 //
 
 #include "stdafx.h"
+#include "TPoint.h"
+#include "ConvexHull.h"
+#include "gtest/gtest.h"
 
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -9,8 +12,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	return 0;
 }
 
-/*#include "TPoint.h"
-#include <gtest.h>
 
 TEST(TPoint, can_create_point)
 {
@@ -66,4 +67,4 @@ TEST(TPoint, can_find_distance_between_points)
 {
   TPoint p1(1,2), p2(2,3);
   EXPECT_EQ(sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p2.y)), p1.distance(p2));
-}*/
+}
