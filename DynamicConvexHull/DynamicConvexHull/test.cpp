@@ -24,6 +24,8 @@ int main(int argc, _TCHAR* argv[])
 		{
 			TPoint p;
 			cin >> p.x >> p.y;
+			bool f=t.IsPointInHull(p);
+			cout << "IsPointInHull" <<f << endl;
 			t.CreateNewConvexHull(p);
 	} break;
 	}

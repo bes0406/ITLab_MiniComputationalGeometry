@@ -122,14 +122,14 @@ bool ConvexHull:: IsPointInHull(TPoint p)  //true если точка принадлежит выпукло
 	int i=0;
 	while ((fl)&&(i<ku-1))
 	{
-		if (p[1]*(u[i][0]-u[i+1][0])-p[0]*(u[i][1]-u[i+1][1])+u[i][1]*u[i+1][0]-u[i+1][1]*u[i][0]<0) 
+		if (p[1]*(u[i][0]-u[i+1][0])-p[0]*(u[i][1]-u[i+1][1])+u[i][1]*u[i+1][0]-u[i+1][1]*u[i][0]<=0) //!!!!!!!!!строгое/нестрогое
 			fl=false;
 		i++;
 	}
 	i=0;
 	while ((fl)&&(i<kd-1))
 	{
-		if (p[1]*(d[i][0]-d[i+1][0])-p[0]*(d[i][1]-d[i+1][1])+d[i][1]*d[i+1][0]-d[i+1][1]*d[i][0]>0)  
+		if (p[1]*(d[i][0]-d[i+1][0])-p[0]*(d[i][1]-d[i+1][1])+d[i][1]*d[i+1][0]-d[i+1][1]*d[i][0]>=0)  //!!!!!!!!!строгое/нестрогое
 			fl=false;
 		i++;
 	}
@@ -146,7 +146,7 @@ int ConvexHull:: FindRightSupportLine(TPoint p)   //поиск правой опорной прямой
 		int j=0;
 		while ((fl)&&(j<k))
 		{
-			if (hull[j][1]*(p[0]-hull[i][0])-hull[j][0]*(p[1]-hull[i][1])+p[1]*hull[i][0]-hull[i][1]*p[0]>0)
+			if (hull[j][1]*(p[0]-hull[i][0])-hull[j][0]*(p[1]-hull[i][1])+p[1]*hull[i][0]-hull[i][1]*p[0]>0) //!!!!!!!!!строгое/нестрогое
 				fl=false;
 		j++;
 		}
@@ -168,7 +168,7 @@ int ConvexHull:: FindLeftSupportLine(TPoint p)   //поиск левой опорной прямой
 		int j=0;
 		while ((fl)&&(j<k))
 		{
-			if (hull[j][1]*(p[0]-hull[i][0])-hull[j][0]*(p[1]-hull[i][1])+p[1]*hull[i][0]-hull[i][1]*p[0]<0)
+			if (hull[j][1]*(p[0]-hull[i][0])-hull[j][0]*(p[1]-hull[i][1])+p[1]*hull[i][0]-hull[i][1]*p[0]<0)  //!!!!!!!!!строгое/нестрогое
 				fl=false;
 		j++;
 		}
@@ -196,6 +196,26 @@ ConvexHull ConvexHull:: CreateNewConvexHull(TPoint p)
 		else knew=-(r-l-1)+1;
 		TPoint *b;
 		b=new TPoint[knew];
+		if (r==l) 
+		{ 
+			if (k==1) {b[0]=hull[0]; b[1]=p;} 
+			else {
+			int fl=0;
+			int maxd=hull[0].distance(hull[1]);
+			int buf=hull[0].distance(p);
+			if (buf > maxd) {maxd=buf; fl=1;}
+			buf=hull[1].distance(p);
+			if (buf > maxd) {maxd=buf; fl=2;}
+			if (fl==0) {b[0]=hull[0]; b[1]=hull[1];}
+			else if (fl==1) {b[0]=hull[0];b[1]=p;}
+			else {b[0]=p; b[1]=hull[1];}
+			     }
+		} else
+		/*if (r>l) 
+			knew=k-(r-l-1)+1;
+		else knew=-(r-l-1)+1;
+		TPoint *b;
+		b=new TPoint[knew];*/
 		if (r>l)
 		{
 			int st=0;
