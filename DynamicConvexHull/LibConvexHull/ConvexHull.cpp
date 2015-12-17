@@ -94,7 +94,7 @@ bool ConvexHull:: IsPointInHull(TPoint p)  //true если точка принадлежит выпукло
 			u[i]=hull[j];
 			i++;
 		}
-		for (int j=k-1; j<=n; j++,i++)
+		for (int j=k-1; j>=n; j--,i++)    
 			u[i]=hull[j];
 		i=0;
 		for (int j=m; j<=n; j++,i++)
@@ -122,14 +122,14 @@ bool ConvexHull:: IsPointInHull(TPoint p)  //true если точка принадлежит выпукло
 	int i=0;
 	while ((fl)&&(i<ku-1))
 	{
-		if (p[1]*(u[i][0]-u[i+1][0])-p[0]*(u[i][1]-u[i+1][1])+u[i][1]*u[i+1][0]-u[i+1][1]*u[i][0]<=0) //!!!!!!!!!строгое/нестрогое
+		if (p[1]*(u[i][0]-u[i+1][0])-p[0]*(u[i][1]-u[i+1][1])+u[i][1]*u[i+1][0]-u[i+1][1]*u[i][0]<=0) 
 			fl=false;
 		i++;
 	}
 	i=0;
 	while ((fl)&&(i<kd-1))
 	{
-		if (p[1]*(d[i][0]-d[i+1][0])-p[0]*(d[i][1]-d[i+1][1])+d[i][1]*d[i+1][0]-d[i+1][1]*d[i][0]>=0)  //!!!!!!!!!строгое/нестрогое
+		if (p[1]*(d[i][0]-d[i+1][0])-p[0]*(d[i][1]-d[i+1][1])+d[i][1]*d[i+1][0]-d[i+1][1]*d[i][0]>=0)  
 			fl=false;
 		i++;
 	}
